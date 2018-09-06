@@ -1,0 +1,17 @@
+EEPROM01        .EQ     $00000000   RefCount=  0, Mem=EEPR, Source=pass.asm 
+EEPROM02        .EQ     $00000002   RefCount=  0, Mem=EEPR, Source=pass.asm 
+LABEL01         .EQ     $00001000   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL02         .EQ     $00002000   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL03         .EQ     $00003000   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL04         .EQ     $00004000   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL05         .EQ     $00005000   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL06         .EQ     $00006000   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL07         .EQ     $00000000   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL08         .EQ     $00007002   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL09         .EQ     $00008000   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL11         .EQ     $00009002   RefCount=  0, Mem=Code, Source=pass.asm 
+LABLE10         .EQ     $00009000   RefCount=  0, Mem=Code, Source=pass.asm 
+RAM01           .EQ     $00000000   RefCount=  0, Mem=RAM , Source=pass.asm 
+RAM02           .EQ     $00000002   RefCount=  0, Mem=RAM , Source=pass.asm 
+RAM03           .EQ     $00000010   RefCount=  0, Mem=RAM , Source=pass.asm 
+RAM04           .EQ     $00000011   RefCount=  0, Mem=RAM , Source=pass.asm 

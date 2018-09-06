@@ -1,0 +1,10 @@
+LABEL11         .EQ     $00001000   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL12         .EQ     $00001001   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL13         .EQ     $00001002   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL14         .EQ     $00001004   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL21         .EQ     $00002000   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL31         .EQ     $00003000   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL32         .EQ     $00003001   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL41         .EQ     $00004000   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL42         .EQ     $00004001   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL51         .EQ     $00005000   RefCount=  0, Mem=Code, Source=pass.asm 

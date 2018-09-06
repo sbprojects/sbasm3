@@ -1,0 +1,33 @@
+0000-                  4
+0000-                  5       MACRO       .MA
+0000-                  6                   .DA     0
+0000-                  7                   .DO     1
+0000-                  8                   .DA     #0              This line is assembled
+0000-                  9                   .EL
+0000-                 10                   .DA     #-1             This line is not assembled
+0000-                 11                   .FI
+0000-                 12                   .EM
+0000-                 13
+0002-78 56            17                   .DA     $5678
+0004-                 18
+0004-                 20                   >MACRO                  This line is listed, the expanding macro isn't
+0007-                 21
+0007-                 23                   >MACRO                  This line is listed, as is the expanding macro
+0007-00 00        M    1                   .DA     0
+0009-             M    2                   .DO     1
+0009-00           M    3                   .DA     #0              This line is assembled
+000A-             S    4                   .EL
+000A-             S    5                   .DA     #-1             This line is not assembled
+000A-             M    6                   .FI
+000A-                 24
+000A-                 26                   >MACRO                  This line is listed, as is the expanding macro
+000A-00 00        M    1                   .DA     0
+000C-             M    2                   .DO     1
+000C-00           M    3                   .DA     #0              This line is assembled
+000D-             M    6                   .FI
+000D-                 28
+000D-                 29                   .CR     6502            We need a Cross Overlay for the next test
+000D-A9 00            31             LDA     #0              Timing is not listed
+000F-A9 00            33 (  2)             LDA     #0              Timing is listed again
+0011-                 34
+0011-                 36

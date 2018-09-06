@@ -1,0 +1,8 @@
+A               .EQ     $00000000   RefCount=  6, Mem=Code, Source=pic16.asm 
+B               .EQ     $00000001   RefCount=  6, Mem=Code, Source=pic16.asm 
+BIT             .EQ     $00000003   RefCount=  9, Mem=Code, Source=pic16.asm 
+FILE            .EQ     $00000012   RefCount= 85, Mem=Code, Source=pic16.asm 
+GPR             .EQ     $00000123   RefCount= 10, Mem=Code, Source=pic16.asm 
+SFR             .EQ     $00000F80   RefCount=  4, Mem=Code, Source=pic16.asm 
+THATS_ODD       .EQ     $00000178   RefCount=  1, Mem=Code, Source=pic16.asm 
+VERY_ODD        .EQ     $0000017D   RefCount=  1, Mem=Code, Source=pic16.asm 

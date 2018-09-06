@@ -1,0 +1,73 @@
+# Testing the .HS directive (should produce no errors)
+
+        .OR     $1000
+        .TF     output.bin,bin
+
+        .HS  000102030405060708090A0B0C0D0E0F
+        .HS  101112131415161718191A1B1C1D1E1F
+        .HS  202122232425262728292A2B2C2D2E2F
+        .HS  303132333435363738393A3B3C3D3E3F
+        .HS  404142434445464748494A4B4C4D4E4F
+        .HS  505152535455565758595A5B5C5D5E5F
+        .HS  606162636465666768696A6B6C6D6E6F
+        .HS  707172737475767778797A7B7C7D7E7F
+        .HS  808182838485868788898A8B8C8D8E8F
+        .HS  909192939495969798999A9B9C9D9E9F
+        .HS  A0A1A2A3A4A5A6A7A8A9AAABACADAEAF
+        .HS  B0B1B2B3B4B5B6B7B8B9BABBBCBDBEBF
+        .HS  C0C1C2C3C4C5C6C7C8C9CACBCCCDCECF
+        .HS  D0D1D2D3D4D5D6D7D8D9DADBDCDDDEDF
+        .HS  E0E1E2E3E4E5E6E7E8E9EAEBECEDEEEF
+        .HS  F0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF
+
+        .HS  000102030405060708090a0b0c0d0e0f
+        .HS  101112131415161718191a1b1c1d1e1f
+        .HS  202122232425262728292a2b2c2d2e2f
+        .HS  303132333435363738393a3b3c3d3e3f
+        .HS  404142434445464748494a4b4c4d4e4f
+        .HS  505152535455565758595a5b5c5d5e5f
+        .HS  606162636465666768696a6b6c6d6e6f
+        .HS  707172737475767778797a7b7c7d7e7f
+        .HS  808182838485868788898a8b8c8d8e8f
+        .HS  909192939495969798999a9b9c9d9e9f
+        .HS  a0a1a2a3a4a5a6a7a8a9aaabacadaeaf
+        .HS  b0b1b2b3b4b5b6b7b8b9babbbcbdbebf
+        .HS  c0c1c2c3c4c5c6c7c8c9cacbcccdcecf
+        .HS  d0d1d2d3d4d5d6d7d8d9dadbdcdddedf
+        .HS  e0e1e2e3e4e5e6e7e8e9eaebecedeeef
+        .HS  f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff
+
+        .HS  .00.01.02.03.04.05.06.07.08.09.0A.0B.0C.0D.0E.0F
+        .HS  .10.11.12.13.14.15.16.17.18.19.1A.1B.1C.1D.1E.1F
+        .HS  .20.21.22.23.24.25.26.27.28.29.2A.2B.2C.2D.2E.2F
+        .HS  .30.31.32.33.34.35.36.37.38.39.3A.3B.3C.3D.3E.3F
+        .HS  .40.41.42.43.44.45.46.47.48.49.4A.4B.4C.4D.4E.4F
+        .HS  .50.51.52.53.54.55.56.57.58.59.5A.5B.5C.5D.5E.5F
+        .HS  .60.61.62.63.64.65.66.67.68.69.6A.6B.6C.6D.6E.6F
+        .HS  .70.71.72.73.74.75.76.77.78.79.7A.7B.7C.7D.7E.7F
+        .HS  .80.81.82.83.84.85.86.87.88.89.8A.8B.8C.8D.8E.8F
+        .HS  .90.91.92.93.94.95.96.97.98.99.9A.9B.9C.9D.9E.9F
+        .HS  .A0.A1.A2.A3.A4.A5.A6.A7.A8.A9.AA.AB.AC.AD.AE.AF
+        .HS  .B0.B1.B2.B3.B4.B5.B6.B7.B8.B9.BA.BB.BC.BD.BE.BF
+        .HS  .C0.C1.C2.C3.C4.C5.C6.C7.C8.C9.CA.CB.CC.CD.CE.CF
+        .HS  .D0.D1.D2.D3.D4.D5.D6.D7.D8.D9.DA.DB.DC.DD.DE.DF
+        .HS  .E0.E1.E2.E3.E4.E5.E6.E7.E8.E9.EA.EB.EC.ED.EE.EF
+        .HS  .F0.F1.F2.F3.F4.F5.F6.F7.F8.F9.FA.FB.FC.FD.FE.FF
+
+        .HS  .00.01.02.03.04.05.06.07.08.09.0a.0b.0c.0d.0e.0f
+        .HS  .10.11.12.13.14.15.16.17.18.19.1a.1b.1c.1d.1e.1f
+        .HS  .20.21.22.23.24.25.26.27.28.29.2a.2b.2c.2d.2e.2f
+        .HS  .30.31.32.33.34.35.36.37.38.39.3a.3b.3c.3d.3e.3f
+        .HS  .40.41.42.43.44.45.46.47.48.49.4a.4b.4c.4d.4e.4f
+        .HS  .50.51.52.53.54.55.56.57.58.59.5a.5b.5c.5d.5e.5f
+        .HS  .60.61.62.63.64.65.66.67.68.69.6a.6b.6c.6d.6e.6f
+        .HS  .70.71.72.73.74.75.76.77.78.79.7a.7b.7c.7d.7e.7f
+        .HS  .80.81.82.83.84.85.86.87.88.89.8a.8b.8c.8d.8e.8f
+        .HS  .90.91.92.93.94.95.96.97.98.99.9a.9b.9c.9d.9e.9f
+        .HS  .a0.a1.a2.a3.a4.a5.a6.a7.a8.a9.aa.ab.ac.ad.ae.af
+        .HS  .b0.b1.b2.b3.b4.b5.b6.b7.b8.b9.ba.bb.bc.bd.be.bf
+        .HS  .c0.c1.c2.c3.c4.c5.c6.c7.c8.c9.ca.cb.cc.cd.ce.cf
+        .HS  .d0.d1.d2.d3.d4.d5.d6.d7.d8.d9.da.db.dc.dd.de.df
+        .HS  .e0.e1.e2.e3.e4.e5.e6.e7.e8.e9.ea.eb.ec.ed.ee.ef
+        .HS  .f0.f1.f2.f3.f4.f5.f6.f7.f8.f9.fa.fb.fc.fd.fe.ff
+

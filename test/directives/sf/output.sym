@@ -1,0 +1,9 @@
+AAAA            .EQ     $00000140   RefCount=  1, Mem=Code, Source=pass.asm 
+.LOCAL          .EQ     $00000014   RefCount=  1, Mem=Code, Source=pass.asm 
+BBBB            .EQ     $00000200   RefCount=  0, Mem=Code, Source=pass.asm 
+.LOCAL          .EQ     $00000020   RefCount=  0, Mem=Code, Source=pass.asm 
+CODE            .EQ     $00000003   RefCount=  0, Mem=Code, Source=pass.asm 
+EEPROM          .EQ     $00000002   RefCount=  0, Mem=EEPR, Source=pass.asm 
+GLOBAL_LABEL    .EQ     $00000004   RefCount=  0, Mem=Code, Source=pass.asm 
+LABEL1          .EQ     $00001234   RefCount=  2, Mem=Code, Source=pass.asm 
+RAM             .EQ     $00000001   RefCount=  0, Mem=RAM , Source=pass.asm 

@@ -1,0 +1,18 @@
+Source file: pass.asm
+
+*** Error: Illegal label name
+      5 000         This line produces an error, deliberately.
+
+*** Error: Illegal binary digit
+      6             .DA     12AB        # Wrong decimal format
+
+*** Error: "This is a user generated error." 
+      8             .ER     "This is a user generated error."
+
+*** Fatal Error: No Cross Assembler loaded
+     10             And this one is a fatal error!
+
+
+4 Errors found during assembly.
+0 Warnings found during assembly.
+

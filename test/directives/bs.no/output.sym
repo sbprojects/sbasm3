@@ -1,0 +1,46 @@
+AVR01           .EQ     $00004000   RefCount=  0, Mem=Code, Source=pass.asm 
+AVR02           .EQ     $00004001   RefCount=  0, Mem=Code, Source=pass.asm 
+AVR03           .EQ     $00004002   RefCount=  0, Mem=Code, Source=pass.asm 
+AVR04           .EQ     $00004003   RefCount=  0, Mem=Code, Source=pass.asm 
+AVR05           .EQ     $00004005   RefCount=  0, Mem=Code, Source=pass.asm 
+AVR06           .EQ     $00004006   RefCount=  0, Mem=Code, Source=pass.asm 
+AVR07           .EQ     $00004007   RefCount=  0, Mem=Code, Source=pass.asm 
+AVR08           .EQ     $0000400A   RefCount=  0, Mem=Code, Source=pass.asm 
+AVR09           .EQ     $00004013   RefCount=  0, Mem=Code, Source=pass.asm 
+AVR10           .EQ     $0000401C   RefCount=  0, Mem=Code, Source=pass.asm 
+AVR11           .EQ     $00004100   RefCount=  0, Mem=Code, Source=pass.asm 
+EEPROM01        .EQ     $00002000   RefCount=  0, Mem=EEPR, Source=pass.asm 
+EEPROM02        .EQ     $00002002   RefCount=  0, Mem=EEPR, Source=pass.asm 
+EEPROM03        .EQ     $00002003   RefCount=  0, Mem=EEPR, Source=pass.asm 
+EEPROM04        .EQ     $00002006   RefCount=  0, Mem=EEPR, Source=pass.asm 
+EEPROM05        .EQ     $00002008   RefCount=  0, Mem=EEPR, Source=pass.asm 
+EEPROM06        .EQ     $00002009   RefCount=  0, Mem=EEPR, Source=pass.asm 
+EEPROM07        .EQ     $0000200D   RefCount=  0, Mem=EEPR, Source=pass.asm 
+EEPROM08        .EQ     $0000201E   RefCount=  0, Mem=EEPR, Source=pass.asm 
+EEPROM09        .EQ     $00002030   RefCount=  0, Mem=EEPR, Source=pass.asm 
+EEPROM10        .EQ     $00003000   RefCount=  0, Mem=EEPR, Source=pass.asm 
+FORM01          .EQ     $00003800   RefCount=  0, Mem=Code, Source=pass.asm 
+FORM02          .EQ     $00003802   RefCount=  0, Mem=Code, Source=pass.asm 
+FORM03          .EQ     $00003803   RefCount=  0, Mem=Code, Source=pass.asm 
+FORM04          .EQ     $00003806   RefCount=  0, Mem=Code, Source=pass.asm 
+FORM05          .EQ     $00003808   RefCount=  0, Mem=Code, Source=pass.asm 
+FORM06          .EQ     $00003809   RefCount=  0, Mem=Code, Source=pass.asm 
+FORM07          .EQ     $0000380D   RefCount=  0, Mem=Code, Source=pass.asm 
+FORM08          .EQ     $0000381E   RefCount=  0, Mem=Code, Source=pass.asm 
+FORM09          .EQ     $00003830   RefCount=  0, Mem=Code, Source=pass.asm 
+FORM10          .EQ     $00003900   RefCount=  0, Mem=Code, Source=pass.asm 
+HEX01           .EQ     $00003000   RefCount=  0, Mem=Code, Source=pass.asm 
+HEX02           .EQ     $00003002   RefCount=  0, Mem=Code, Source=pass.asm 
+HEX03           .EQ     $00003003   RefCount=  0, Mem=Code, Source=pass.asm 
+HEX04           .EQ     $00003006   RefCount=  0, Mem=Code, Source=pass.asm 
+HEX05           .EQ     $00003008   RefCount=  0, Mem=Code, Source=pass.asm 
+HEX06           .EQ     $00003009   RefCount=  0, Mem=Code, Source=pass.asm 
+HEX07           .EQ     $0000300D   RefCount=  0, Mem=Code, Source=pass.asm 
+HEX08           .EQ     $0000301E   RefCount=  0, Mem=Code, Source=pass.asm 
+HEX09           .EQ     $00003030   RefCount=  0, Mem=Code, Source=pass.asm 
+HEX10           .EQ     $00003100   RefCount=  0, Mem=Code, Source=pass.asm 
+RAM01           .EQ     $00001000   RefCount=  1, Mem=RAM , Source=pass.asm 
+RAM02           .EQ     $00001002   RefCount=  1, Mem=RAM , Source=pass.asm 
+RAM03           .EQ     $00001003   RefCount=  1, Mem=RAM , Source=pass.asm 
+RAM04           .EQ     $00001006   RefCount=  1, Mem=RAM , Source=pass.asm 
+RAM05           .EQ     $00001016   RefCount=  1, Mem=RAM , Source=pass.asm 

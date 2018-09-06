@@ -1,0 +1,13 @@
+ALL._1          .EQ     $00000003   RefCount=  0, Mem=Code, Source=pass.asm 
+CODE            .EQ     $00000032   RefCount=  0, Mem=Code, Source=pass.asm 
+COLON           .EQ     $00000005   RefCount=  0, Mem=Code, Source=pass.asm 
+.LOCAL          .EQ     $00000011   RefCount=  1, Mem=Code, Source=pass.asm 
+.MACRO          .EQ     $00000012   RefCount=  0, Mem=Code, Source=pass.asm 
+EEPROM          .EQ     $00000030   RefCount=  0, Mem=EEPR, Source=pass.asm 
+GLOBAL          .EQ     $00000001   RefCount=  0, Mem=Code, Source=pass.asm 
+LOWER           .EQ     $00000002   RefCount=  0, Mem=Code, Source=pass.asm 
+NEW             .EQ     $00000020   RefCount=  0, Mem=Code, Source=pass.asm 
+.LOCAL          .EQ     $00000021   RefCount=  0, Mem=Code, Source=pass.asm 
+.MACRO          .EQ     $00000022   RefCount=  0, Mem=Code, Source=pass.asm 
+RAM             .EQ     $00000031   RefCount=  0, Mem=RAM , Source=pass.asm 
+_UNDER          .EQ     $00000004   RefCount=  1, Mem=Code, Source=pass.asm 
