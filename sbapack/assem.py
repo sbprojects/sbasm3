@@ -736,6 +736,11 @@ def EvalExpr():
     label)
     """
 
+    negate = NowChar()
+    if negate == '~':
+        # The negate symbole preceeds the value
+        IncParsePointer()
+
     operators = '+-*/\\&^|!=<>'
     totalval = GetValue()
 
@@ -764,6 +769,10 @@ def EvalExpr():
         else:
             errors.DoError('valerr', False)
             break
+
+    if negate == '~':
+        # The value needs to be negated first
+        totalval = (totalval[0] ^ 0xFFFFFFFF, totalval[1], totalval[2])
 
     return totalval     # Return a tuple (value, forward, memory)
 

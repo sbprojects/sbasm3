@@ -39,6 +39,9 @@ LE_EQ_FALSE     .EQ     $00000000   RefCount=  0, Mem=Code, Source=pass.asm
 LE_EQ_TRUE      .EQ     $FFFFFFFF   RefCount=  0, Mem=Code, Source=pass.asm 
 MOD             .EQ     $00000DA8   RefCount=  0, Mem=Code, Source=pass.asm 
 MUL             .EQ     $04C5F4B4   RefCount=  0, Mem=Code, Source=pass.asm 
+NEGATE1         .EQ     $EDCBA987   RefCount=  0, Mem=Code, Source=pass.asm 
+NEGATE2         .EQ     $01234567   RefCount=  0, Mem=Code, Source=pass.asm 
+NEGATE3         .EQ     $FFFFFFEF   RefCount=  0, Mem=Code, Source=pass.asm 
 NOT_EQ_FALSE    .EQ     $00000000   RefCount=  0, Mem=Code, Source=pass.asm 
 NOT_EQ_TRUE     .EQ     $FFFFFFFF   RefCount=  0, Mem=Code, Source=pass.asm 
 OCTAL_MAX       .EQ     $FFFFFFFF   RefCount=  0, Mem=Code, Source=pass.asm 
