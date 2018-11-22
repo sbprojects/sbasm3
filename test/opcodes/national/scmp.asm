@@ -67,6 +67,11 @@
                 RET     P2
                 RET     P3
 
+                XPAL    0       Alternative pointer syntax
+                XPAL    1
+                XPAL    2
+                XPAL    3
+
 ;---------------------------------------------------------------------------
 ;   Immediate Addressing Mode Instructions
 ;---------------------------------------------------------------------------
@@ -146,6 +151,8 @@ TEST            .DA     #$A5        Some arbitrary data
                 CAD     (P2)
                 CAD     (P3)
 
+                ST      10(3)       Alternative index register addressing
+
 ;---------------------------------------------------------------------------
 ;   Memory reference Instructinos (Illegal addressing modes)
 ;---------------------------------------------------------------------------
@@ -176,6 +183,8 @@ TEST            .DA     #$A5        Some arbitrary data
                 JMP     (P1)
                 JMP     (P2)
                 JMP     (P3)
+
+                JMP     (0)         Alternative index register addressing
 
 LABEL
 

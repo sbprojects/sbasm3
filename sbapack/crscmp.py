@@ -20,7 +20,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.01.01'
+crossversion = '3.01.02'
 minversion = '3.01.00'
 
 
@@ -242,7 +242,8 @@ def GetPtr():
 
     """
     A pointer parameter is expected. Legal options are P0, PC, P1, P2 or P3
-    They translate to 0..3, where P0 and PC are equal and generate 0
+    They translate to 0..3, where P0 and PC are equal and generate 0.
+    For compatibility digits 0, 1, 2 and 3 are also accepted.
     """
 
     global Asm
@@ -251,23 +252,30 @@ def GetPtr():
     param = assem.GetWord().upper()
 
     if param == '':
+        # Empty parameter not allowed
         errors.DoError('missoper', False)
         return 0
 
     if len(param) == 2 and param[0] == 'P':
+        # Strip leading P if parameter length = 2
         param = param[1]
+        if param == 'C':
+            # Translate PC parameter to 0
+            param = '0'
 
+    if len(param) == 1:
+        # Parameter length may only be 1 now
         if param.isdigit():
+            # The parameter must be digit from 0 to 3 now
             ptr = int(param)
             if ptr > 3:
                 errors.DoError('badoper', False)
         else:
-            if param == 'C':
-                ptr = 0
-            else:
-                errors.DoError('badoper', False)
-                ptr = 0
+            # Parameter was not a digit
+            errors.DoError('badoper', False)
+            ptr = 0
     else:
+        # Parameter length was not 1
         errors.DoError('badoper', False)
         ptr = 0
 
@@ -292,6 +300,7 @@ def GetDisplacement(opcode, allowauto):
      E(Px)      Offset = relative E-reg and x can be 0 to 3 or C
      expr(Px)   Offset = relative expr and x can be 0 to 3 or C
      expr       Offset = absolute expr and register is assumed PC
+    PS: the P of the pointers is optional
 
     Not allowed:
      @(PC) or @(P0)
@@ -362,7 +371,12 @@ def GetDisplacement(opcode, allowauto):
             # Still going good
             reg = assem.NowChar(True).upper()
         else:
-            error = True
+            # We now allow omitting P for numbered registers
+            dec.Asm.Parse_Pointer -= 1
+            reg = assem.NowChar(True).upper()
+            if reg not in "0123":
+                # It can't be a register
+                error = True
         if assem.NowChar(True) != ')':
             # Something's wrong
             error = True

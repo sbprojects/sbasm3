@@ -20,7 +20,7 @@ import os
 # Default values
 # ------------------------------------------------------------------------------
 
-VERSION = "3.03.03"
+VERSION = "3.03.04"
 DEF_ENV = "SBASM"
 ERRLVL_OK = 0       # No errors
 ERRLVL_PASS1 = 1    # Errors found during pass 1
