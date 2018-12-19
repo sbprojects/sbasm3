@@ -953,7 +953,7 @@ def InOut():
 
         reg2 = GetReg()
 
-        if dec.Asm.Mnemonic in ('OUT', 'OUTO'):
+        if dec.Asm.Mnemonic in ('OUT', 'OUTO', 'OUT0'):
             # Swap parameters, makes it a lot easier
             temp = reg1
             reg1 = reg2
@@ -977,7 +977,7 @@ def InOut():
                 dec.Asm.Timing = dec.Asm.Instructions[dec.Asm.Mnemonic][2][1]
             else:
                 errors.DoError('badoper', False)
-        elif reg2[0] == '(M)' and dec.Asm.Mnemonic in ('INO', 'OUTO'):
+        elif reg2[0] == '(M)' and dec.Asm.Mnemonic in ('INO', 'OUTO', 'IN0', 'OUT0'):
             # For Z180 it can be reg,(M)
             if reg1[0] in ('A', 'B', 'C', 'D', 'E', 'H', 'L'):
                 Code(dec.Asm.Instructions[dec.Asm.Mnemonic][1][0] +

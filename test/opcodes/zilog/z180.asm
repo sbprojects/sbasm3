@@ -700,13 +700,13 @@ FORWARD         DJNZ    FORWARD
                 IN      H,(C)
                 IN      L,(C)
 
-                INO     A,($12)         New to Z180
-                INO     B,($12)         New to Z180
-                INO     C,($12)         New to Z180
-                INO     D,($12)         New to Z180
-                INO     E,($12)         New to Z180
-                INO     H,($12)         New to Z180
-                INO     L,($12)         New to Z180
+                IN0     A,($12)         New to Z180
+                IN0     B,($12)         New to Z180
+                IN0     C,($12)         New to Z180
+                IN0     D,($12)         New to Z180
+                IN0     E,($12)         New to Z180
+                IN0     H,($12)         New to Z180
+                IN0     L,($12)         New to Z180
 
                 OUT     ($12),A
                 OUT     (C),A
@@ -717,13 +717,13 @@ FORWARD         DJNZ    FORWARD
                 OUT     (C),H
                 OUT     (C),L
 
-                OUTO    ($12),A         New to Z180
-                OUTO    ($12),B         New to Z180
-                OUTO    ($12),C         New to Z180
-                OUTO    ($12),D         New to Z180
-                OUTO    ($12),E         New to Z180
-                OUTO    ($12),H         New to Z180
-                OUTO    ($12),L
+                OUT0    ($12),A         New to Z180
+                OUT0    ($12),B         New to Z180
+                OUT0    ($12),C         New to Z180
+                OUT0    ($12),D         New to Z180
+                OUT0    ($12),E         New to Z180
+                OUT0    ($12),H         New to Z180
+                OUT0    ($12),L
 
                 TSTIO   $12             New to Z180
 

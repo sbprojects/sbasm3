@@ -21,7 +21,7 @@ import errors
 import target
 import crz80
 
-crossversion = '3.01.01'
+crossversion = '3.01.02'
 minversion = '3.01.00'
 
 
@@ -242,8 +242,10 @@ def CrossInit():
 
         'IN'  : (crz80.InOut, (0xED40, 0xDB), ('9', '9')),
         'OUT' : (crz80.InOut, (0xED41, 0xD3), ('10', '10')),
-        'INO' : (crz80.InOut, (0xED00, 0x00), ('12', '0')),
-        'OUTO': (crz80.InOut, (0xED01, 0x00), ('13', '0')),
+        'INO' : (crz80.InOut, (0xED00, 0x00), ('12', '0')),    # Actually wrong
+        'IN0' : (crz80.InOut, (0xED00, 0x00), ('12', '0')),
+        'OUTO': (crz80.InOut, (0xED01, 0x00), ('13', '0')),    # Actually wrong
+        'OUT0': (crz80.InOut, (0xED01, 0x00), ('13', '0')),
         'TSTIO': (crz80.InOut, (0xED74, 0x00), ('12', '0')),
 
         'EX'  : (crz80.Exch, (0xEB, 0x08, 0xE3, 0xDDE3, 0xFDE3),
