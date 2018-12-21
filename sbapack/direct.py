@@ -128,8 +128,13 @@ def DirAS(mode=0):
             count = 0
             while dec.Asm.Parse_Pointer < len(dec.Asm.Parse_Line) - 1:
                 char = assem.NowChar(True)
-                if char == delimit:
-                    break
+                if char == "\\" and delimit != "\\":
+                    # Escape the next character
+                    char = assem.NowChar(True)
+                else:
+                    # Handle this character normally
+                    if char == delimit:
+                        break
                 count = count + 1
                 characters.append(ord(char) | negasc)
             if char != delimit:
@@ -586,8 +591,13 @@ def DirDB():
             delimit = assem.NowChar(True)
             while dec.Asm.Parse_Pointer < len(dec.Asm.Parse_Line) - 1:
                 char = assem.NowChar(True)
-                if char == delimit:
-                    break
+                if char == "\\":
+                    # Escape the next character
+                    char = assem.NowChar(True)
+                else:
+                    # Handle character normally
+                    if char == delimit:
+                        break
                 count = count + 1
                 dec.Cross.SaveByte(ord(char))
             if char != delimit:
@@ -1842,8 +1852,13 @@ def DirTW():
                 count = 0
                 while dec.Asm.Parse_Pointer < len(dec.Asm.Parse_Line) - 1:
                     char = assem.NowChar(True)
-                    if char == delimit:
-                        break
+                    if char == "\\" and delimit != "\\":
+                        # Escape the next character
+                        char = assem.NowChar(True)
+                    else:
+                        # Handle the character normally
+                        if char == delimit:
+                            break
                     count = count + 1
                     line = line + char
                 if char != delimit:

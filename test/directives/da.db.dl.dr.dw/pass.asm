@@ -17,6 +17,7 @@ LONG_INT    =       $12345678
             .DB     0x12,0x34       Store these two bytes
             .DB     "Test"          Store a string of bytes
             .DB     "Test",0DH,0AH  Store a string and two bytes
+            .DB     "Escaped \" and \\"
 
             .DL     LONG_INT        Store the entire long integer
             .DL     #LONG_INT       Store only the two LSBs
@@ -49,6 +50,7 @@ LONG_INT    =       $12345678
             .DB     0x12,0x34       Store these two bytes
             .DB     "Test"          Store a string of bytes
             .DB     "Test",0DH,0AH  Store a string and two bytes
+            .DB     "Escaped \" and \\"
 
             .DL     LONG_INT        Store the entire long integer
             .DL     #LONG_INT       Store only the two LSBs

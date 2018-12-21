@@ -1,4 +1,4 @@
-# Testing the .MA .EM and .XM directives (should produce no errors, will give a warning)
+# Testing the .MA .EM and .XM directives (should produce no errors, will give 1 warning)
 
             .TF     output.hex,hex
 
@@ -55,3 +55,11 @@ MACRO4      .MA     FLAG
             >MACRO4 1
 
             .EM                 This gives a warning
+
+# Escaping literals
+MACRO5      .MA     LITERAL
+            .AS     "]1"
+            .EM
+
+            >MACRO5 "Escaped\"Literal"
+

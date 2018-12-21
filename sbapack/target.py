@@ -294,7 +294,7 @@ def FlushTarget(memory=0, last=False):
         # Flush EEPROM memory line
         if dec.Asm.Eeprom_Tformat == 'BIN':
             TformatBIN(dec.Asm.Eeprom_Tbuffer, dec.Asm.Eeprom_Tfile)
-        elif dec.Asm.Code_Tformat != "":
+        elif dec.Asm.Eeprom_Tformat != "":
             line = dec.Asm.Eeprom_Tfunc(dec.Asm.Eeprom_Tbuffer, memory, last)
             dec.Asm.Eeprom_Tfile.write(line)
         dec.Asm.Eeprom_Tbuffer = []

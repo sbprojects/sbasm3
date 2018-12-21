@@ -1,7 +1,7 @@
 # Testing the .AS .AT and .AZ directives (should produce no errors)
 
         .OR     $1000
-        .TF     output.bin,bin
+        .TF     output.hex,hex
 
         .AS     /abcdefghijklmnopqrstuvwxyz/
         .AT     /abcdefghijklmnopqrstuvwxyz/
@@ -18,4 +18,8 @@
         .AS     -#$7f,/test/,#$0D
         .AT     -#$7f,/test/,#$0D
         .AZ     -#$7f,/test/,#$0D
+
+        .AS     "Escaped \" quote and \\ backslash"
+        .AT     "Escaped \" quote and \\ backslash"
+        .AZ     "Escaped \" quote and \\ backslash"
 

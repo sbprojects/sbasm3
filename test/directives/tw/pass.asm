@@ -8,6 +8,9 @@
                 .TW     #$7C,/Testing/,#$7C,/Testing/,#$7C
                 .AS     /Testing|/
 
+                .TW     "Testing\"Escape"
+                .HS     1112131415161718
+
                 .SM     RAM
                 .TW     /This simply gets lost because there is no target file./
 
@@ -16,3 +19,7 @@
                 .HS     0102030405060708
                 .TW     /Testing/
                 .HS     0102030405060708
+
+                .TW     "Testing\"Escape"
+                .HS     1112131415161718
+

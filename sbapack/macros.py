@@ -108,7 +108,13 @@ def GetOneParameter():
         assem.IncParsePointer()
         while assem.NowChar() != endmark:
             # Get parameter until end mark
-            parameter = parameter + assem.NowChar(True)
+            singlechar = assem.NowChar(True)
+            if singlechar == "\\":
+                # Escaping, include the Escape symbol in parameter
+                parameter = parameter + singlechar
+                # And add the Escaped character too
+                singlechar = assem.NowChar(True)
+            parameter = parameter + singlechar
         assem.IncParsePointer()     # Increment past endmark
         return parameter
     else:
