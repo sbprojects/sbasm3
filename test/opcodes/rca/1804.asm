@@ -15,7 +15,7 @@
 ;   Implied addressing mode instructions
 ;---------------------------------------------------------------------------
 
-                INX
+                IRX
                 LDX
                 LDXA
                 STXD

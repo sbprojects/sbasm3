@@ -20,7 +20,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.01.00'
+crossversion = '3.01.01'
 minversion = '3.01.00'
 
 
@@ -42,7 +42,7 @@ def CrossInit():
     dec.Asm.Instructions = {
 
         # Instructions which don't require an operand and are 1 byte long
-        'INX' : (Implied, 0x60, '2'),
+        'IRX' : (Implied, 0x60, '2'),
         'LDX' : (Implied, 0xF0, '2'),
         'LDXA': (Implied, 0x72, '2'),
         'STXD': (Implied, 0x73, '2'),
