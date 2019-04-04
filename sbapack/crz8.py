@@ -20,7 +20,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.01.02'
+crossversion = '3.01.03'
 minversion = '3.01.00'
 
 
@@ -577,11 +577,12 @@ def Jumps():
 
         reg1 = GetReg()
 
-        if reg1[0] == '@rr' or reg1[0] == '@R':
+        if reg1[0] == '@rr' or reg1[0] == '@R' or reg1[0] == '@r':
             target.CodeByte(dec.Asm.Instructions[dec.Asm.Mnemonic][1][1])
             target.CodeByte(reg1[1])
             dec.Asm.Timing = dec.Asm.Instructions[dec.Asm.Mnemonic][2][1]
             if reg1[1] & 1 != 0:
+                # Must be an even address to be valid
                 errors.DoError('range', False)
         else:
             errors.DoError('badoper', False)
