@@ -20,7 +20,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.01.01'
+crossversion = '3.01.02'
 minversion = '3.01.00'
 
 
@@ -754,7 +754,7 @@ def GetReg():
     Registers are returned as an 8 bit value.
     In case it was a 4 bit address $E0 is added to the register number
     This indicates 4-bit r mode.
-    In case it was a 8 bit address we can not know whether it was a register
+    In case it was an 8 bit address we can not know whether it was a register
     or a register pair. We should let the instruction decide which it should
     have been. That's why the returned code for registers and pairs is both
     R or @R.
@@ -768,6 +768,7 @@ def GetReg():
                     'R9', 'R10', 'R11', 'R12', 'R13', 'R14', 'R15')
 
     if len(param) == 0:
+        # No parameter found
         errors.DoError('badoper', False)
         return ('!', 0)
 
@@ -848,15 +849,10 @@ def GetReg():
     else:
         # Must be a normal expression now (8-bit register or pair)
         if param[0] == '@':
-            # Can be either indirect mode or an octal number
-            if len(param) > 1 and (param[1] in '01234567'):
-                # Treat this as an octal number
-                prefix = ''
-                dec.Asm.Parse_Pointer = pointer
-            else:
-                # Treat it as an indirect prefix
-                prefix = '@'
-                dec.Asm.Parse_Pointer = pointer + 1
+            # Indirect prefix clashes with octal prefix
+            # So let's forget about octal numbers for now
+            prefix = '@'
+            dec.Asm.Parse_Pointer = pointer + 1
         else:
             prefix = ''
             dec.Asm.Parse_Pointer = pointer
