@@ -492,12 +492,12 @@ MEMORY          .EQ     $5678
 
 LABEL           JP      LABEL
                 JP      NZ,LABEL
-                JP      Z,LABEL
+                JP      Z, LABEL
                 JP      NC,LABEL
                 JP      C,LABEL
                 JP      PO,LABEL
                 JP      PE,LABEL
-                JP      P,LABEL
+                JP      P, LABEL
                 JP      M,LABEL
                 JP      (HL)
                 JP      (IX)
@@ -521,7 +521,7 @@ REVERSE         JR      REVERSE
                 JR      NZ,REVERSE
                 JR      Z,REVERSE
                 JR      NC,FORWARD
-                JR      C,FORWARD
+                JR      C, FORWARD
 FORWARD         DJNZ    FORWARD
 
 ;---------------------------------------------------------------------------

@@ -20,7 +20,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.01.02'
+crossversion = '3.01.03'
 minversion = '3.01.00'
 
 
@@ -716,6 +716,9 @@ def Jumps():
     condition = assem.GetWord().upper()
     if condition in conditions and assem.NowChar(True) == ',':
         # Conditional jump or call
+        if assem.NowChar() == " ":
+            # Allow a space to follow a comma
+            assem.IncParsePointer()
         value = assem.EvalExpr()
         Code(dec.Asm.Instructions[dec.Asm.Mnemonic][1][1] +
              (conditions[condition] << 3))
@@ -761,6 +764,9 @@ def Branch():
     if dec.Asm.Mnemonic == 'JR' and condition in conditions and\
                            assem.NowChar(True) == ',':
         index = conditions[condition]
+        if assem.NowChar() == " ":
+            # Allow a space to follow a comma
+            assem.IncParsePointer()
     else:
         dec.Asm.Parse_Pointer = pointer
         index = 0
