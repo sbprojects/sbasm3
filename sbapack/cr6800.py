@@ -22,7 +22,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.01.01'
+crossversion = '3.01.02'
 minversion = '3.01.00'
 
 
@@ -429,8 +429,9 @@ def Implied(index):
     global Asm
 
     dec.Asm.Timing = dec.Asm.Instructions[dec.Asm.Mnemonic][index]
-    if dec.Asm.Timing == 0:
-        errros.DoError('badopco', False)
+    if dec.Asm.Timing == '0':
+        # This instruction is not available on this processor
+        errors.DoError('badopco', False)
         return
     target.CodeByte(dec.Asm.Instructions[dec.Asm.Mnemonic][1])
 
@@ -447,8 +448,9 @@ def Branch(index):
     global Asm
 
     dec.Asm.Timing = dec.Asm.Instructions[dec.Asm.Mnemonic][index]
-    if dec.Asm.Timing == 0:
-        errros.DoError('badopco', False)
+    if dec.Asm.Timing == '0':
+        # This instruction is not available on this processor
+        errors.DoError('badopco', False)
         return
 
     if MissingOperand():
@@ -494,7 +496,8 @@ def Multi(index):
         # Immediate addressing mode
         opcode = dec.Asm.Instructions[dec.Asm.Mnemonic][1][0]
         dec.Asm.Timing = dec.Asm.Instructions[dec.Asm.Mnemonic][index][0]
-        if dec.Asm.Timing == 0:
+        if dec.Asm.Timing == '0':
+            # This instruction is not available on this processor
             errors.DoError('badopco', False)
             return
         if opcode == 0:
@@ -540,7 +543,8 @@ def Multi(index):
         # It must be ZP,X addressing mode
         opcode = dec.Asm.Instructions[dec.Asm.Mnemonic][1][2]
         dec.Asm.Timing = dec.Asm.Instructions[dec.Asm.Mnemonic][index][2]
-        if dec.Asm.Timing == 0:
+        if dec.Asm.Timing == '0':
+            # This instruction is not available on this processor
             errors.DoError('badopco', False)
             return
 
