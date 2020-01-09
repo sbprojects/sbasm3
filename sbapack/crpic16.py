@@ -20,7 +20,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.01.02'
+crossversion = '3.01.03'
 minversion = '3.01.00'
 
 
@@ -769,7 +769,7 @@ def DirAB():
 
     if dec.Asm.Pass == 2 and (division < 0 or division > 255):
         # Range error. Don't change division
-        errros.DoError('range', False)
+        errors.DoError('range', False)
     else:
         # Range was OK
         dec.Asm.AccessBank18 = division
