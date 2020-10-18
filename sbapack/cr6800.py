@@ -23,7 +23,7 @@ import errors
 import target
 
 crossversion = '3.01.02'
-minversion = '3.01.00'
+minversion = '3.01.01'
 
 
 # ------------------------------------------------------------------------------
@@ -125,7 +125,7 @@ def CrossInit():
         'BPL' : (Branch, 0x2A, '4', '3', '3'),
         'BRA' : (Branch, 0x20, '4', '3', '3'),
         'BRN' : (Branch, 0x21, '0', '3', '3'),
-        'BSR' : (Branch, 0x8D, '8', '3', '3'),
+        'BSR' : (Branch, 0x8D, '8', '6', '3'),
         'BVC' : (Branch, 0x28, '4', '3', '3'),
         'BVS' : (Branch, 0x29, '4', '3', '3'),
         'BHS' : (Branch, 0x24, '4', '3', '3'),
