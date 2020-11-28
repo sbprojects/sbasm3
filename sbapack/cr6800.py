@@ -22,7 +22,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.01.02'
+crossversion = '3.01.03'
 minversion = '3.01.01'
 
 
@@ -473,7 +473,7 @@ def Branch(index):
 def Multi(index):
 
     """
-    Handle all other mnemonics of the 6502 instructionset.
+    Handle all other mnemonics of the 6800 instructionset.
     Each addressing mode has a separate entry in the opcode tupple.
     If the opcode is '00' the particular instruction is not available.
     If the mnemonic ends in S or X immediate mode will have 16 bit constants
@@ -481,10 +481,10 @@ def Multi(index):
 
     global Asm
 
-    available = dec.Asm.Instructions[dec.Asm.Mnemonic][index][0] + \
-        dec.Asm.Instructions[dec.Asm.Mnemonic][index][1] + \
-        dec.Asm.Instructions[dec.Asm.Mnemonic][index][2] + \
-        dec.Asm.Instructions[dec.Asm.Mnemonic][index][3]
+    available = int(dec.Asm.Instructions[dec.Asm.Mnemonic][index][0]) + \
+        int(dec.Asm.Instructions[dec.Asm.Mnemonic][index][1]) + \
+        int(dec.Asm.Instructions[dec.Asm.Mnemonic][index][2]) + \
+        int(dec.Asm.Instructions[dec.Asm.Mnemonic][index][3])
     if available == 0:
         errors.DoError('badopco', False)
         return
