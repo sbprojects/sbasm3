@@ -20,7 +20,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.01.02'
+crossversion = '3.02.00'
 minversion = '3.01.00'
 
 
@@ -203,7 +203,7 @@ def WriteOpcode(data):
 
     """
     Normally an Opcode byte can just be written to memory. However when the
-    Opcde byte is written to the beginning of the page, the assembler assumes
+    Opcode byte is written to the beginning of the page, the assembler assumes
     that you have crossed a page boundary and it will give you a warning.
     Crossing a page boundary is perfectly legal, as long as you know what
     you're doing.
@@ -225,7 +225,7 @@ def WriteOperand(data):
     Normally an Operand can just be written to memory. However when the
     Operand byte is written to the beginning of a memory page it means that
     the instruction is spanning across 2 memory pages, which is not legal.
-    Therefor the assembler will give you an error if that occurs.
+    Therefore the assembler will give you an error if that occurs.
     """
 
     global Asm
@@ -307,8 +307,8 @@ def GetDisplacement(opcode, allowauto):
      @E(PC) or @E(P0)
      @expr(PC) or @expr(P0)
 
-    The opcode can be modified the m flag (Auto indexed mode flag) and or
-     the pointer before it is save to the target file.
+    The opcode can be modified. The m flag (Auto indexed mode flag) and or
+     the pointer before it is saved to the target file.
 
     The assembler will not warn you about page crossings for the EA of the
       instruction. It's the programmer's responsibility to keep data tables
@@ -329,6 +329,7 @@ def GetDisplacement(opcode, allowauto):
         return
 
     offset = 0
+    offset2 = 0
     forward = False
     error = False
     absolute = False
@@ -405,12 +406,19 @@ def GetDisplacement(opcode, allowauto):
             # The offset was not the E register
             # Now we have to calculate the real offset
 
-            offset = offset - dec.Asm.BOL_Address - 1
+            # offset is the normal offset
+            # offset2 could be the offset when a full page wrap occurred
+            #  it is legal to access data at the top of the page, while the
+            #  code is still at the bottom
+
+            offset2 = (offset & 0x0FFF) - 0x1000 - (dec.Asm.BOL_Address & 0x0FFF) - 1
+            offset = (offset & 0x0FFF) - (dec.Asm.BOL_Address & 0x0FFF) - 1
             absolute = True
 
             if dec.Asm.Mnemonic[0].upper() == "J":
                 # An extra offset for Jump instructions
                 offset = offset - 1
+                offset2 = offset2 - 1
 
     if autoindex and reg == '0':
         # Auto indexing doesn't allow the PC register
@@ -424,8 +432,12 @@ def GetDisplacement(opcode, allowauto):
     if dec.Asm.Pass == 2 and not forward:
         # Only test range in pass 2
         if offset < -128 or offset > 127:
-            # Range error
-            errors.DoError('range', False)
+            # The normal offset is out of range
+            if offset2 < -128 or offset2 > 127:
+                # We also didn't do a full page wrap
+                errors.DoError('range', False)
+            else:
+                offset = offset2
         if offset == -128 and absolute:
             # Offset calculated to -128, are you sure!
             errors.DoWarning(dec.Cross.Name + 'offset', True)
