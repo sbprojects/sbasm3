@@ -20,7 +20,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.01.03'
+crossversion = '3.01.05'
 minversion = '3.01.00'
 
 
@@ -273,6 +273,10 @@ def CrossCleanUp():
 
 def CrossMnemonic():
 
+    """
+    Parse the mnemonic, if it doesn't contain a dot.
+    """
+
     global Asm
 
     if '.' in dec.Asm.Mnemonic:
@@ -291,6 +295,10 @@ def CrossMnemonic():
 
 def MissingOperand():
 
+    """
+    The current opcode requires an operand. Raise an error if there is none.
+    """
+
     if dec.Asm.Parse_Pointer == 0:
         errors.DoError('missoper', False)
         return True
@@ -303,6 +311,10 @@ def MissingOperand():
 
 def NoMore():
 
+    """
+    We're done with this line. Raise an error if more code follows.
+    """
+
     if assem.MoreParameters():
         errors.DoWarning('extrign', False)
 
@@ -310,6 +322,10 @@ def NoMore():
 # -----------------------------------------------------------------------------
 
 def Inherent():
+
+    """
+    We're handling an inherent instruction. We have all we need. Execute it.
+    """
 
     global Asm
 
@@ -321,6 +337,11 @@ def Inherent():
 # -----------------------------------------------------------------------------
 
 def Load():
+
+    """
+    The LD instruction can have quite complicated paramters
+
+    """
 
     global Asm
 
@@ -490,6 +511,10 @@ def GetReg():
 
 def Stack():
 
+    """
+    Handling stack related instructions.
+    """
+
     global Asm
 
     if MissingOperand():
@@ -498,6 +523,7 @@ def Stack():
     pair = assem.GetWord().upper()
 
     if pair in ('BC', 'DE', 'HL', 'AF'):
+        # It's a register pair which doesnt require a prefix byte
         if pair == 'DE':
             offset = 16
         elif pair == 'HL':
@@ -509,6 +535,7 @@ def Stack():
         Code(dec.Asm.Instructions[dec.Asm.Mnemonic][1] + offset)
         dec.Asm.Timing = dec.Asm.Instructions[dec.Asm.Mnemonic][2][0]
     elif pair in ('IX', 'IY'):
+        # It's a register pair which requires a prefix byte
         if pair == 'IX':
             prefix = 0xDD
         else:
@@ -518,6 +545,7 @@ def Stack():
         dec.Asm.Timing = dec.Asm.Instructions[dec.Asm.Mnemonic][2][1]
 
     else:
+        # Didn't find a valie register pair
         errors.DoError('badoper', False)
 
     NoMore()
@@ -527,6 +555,10 @@ def Stack():
 
 def Mult():
 
+    """
+    Handling the multiply instruction.
+    """
+
     global Asm
 
     if MissingOperand():
@@ -535,6 +567,7 @@ def Mult():
     pair = assem.GetWord().upper()
 
     if pair in ('BC', 'DE', 'HL', 'SP'):
+        # Legeal operand pair
         if pair == 'DE':
             offset = 16
         elif pair == 'HL':
@@ -546,6 +579,7 @@ def Mult():
         Code(dec.Asm.Instructions[dec.Asm.Mnemonic][1] + offset)
         dec.Asm.Timing = dec.Asm.Instructions[dec.Asm.Mnemonic][2]
     else:
+        # Illegal operand pair
         errors.DoError('badoper', False)
 
     NoMore()
@@ -554,6 +588,10 @@ def Mult():
 # -----------------------------------------------------------------------------
 
 def Math():
+
+    """
+    Handling Math instructions.
+    """
 
     global Asm
 
@@ -601,6 +639,7 @@ def Math():
                 target.CodeByte(reg2[1])
                 dec.Asm.Timing = dec.Asm.Instructions[dec.Asm.Mnemonic][2][3]
             else:
+                # No legal second operand found
                 errors.DoError('badoper', False)
         else:
             # TST instruction, unique to Z180
@@ -662,6 +701,10 @@ def Math():
 
 def IncDec():
 
+    """
+    Increment and Decrement instructions
+    """
+
     global Asm
 
     if MissingOperand():
@@ -704,6 +747,10 @@ def IncDec():
 # -----------------------------------------------------------------------------
 
 def Jumps():
+
+    """
+    Handling JP instructions
+    """
 
     global Asm
 
@@ -753,6 +800,10 @@ def Jumps():
 
 def Branch():
 
+    """
+    Handling Branch instructions
+    """
+
     global Asm
 
     if MissingOperand():
@@ -788,20 +839,22 @@ def Branch():
 
 def Returns():
 
+    """
+    Handling Branch instructions.
+    """
+
     global Asm
 
     conditions = {'NZ': 0, 'Z': 1, 'NC': 2, 'C': 3, 'PO': 4, 'PE': 5, 'P': 6,
                   'M': 7}
-    if dec.Asm.Optional:
-        # Parameter was following within 10 spaces
-        condition = assem.GetWord().upper()
-        if condition in conditions:
-            cond = conditions[condition] << 3
-            index = 1
-        else:
-            cond = 0
-            index = 0
+
+    condition = assem.GetWord().upper()
+    if condition in conditions:
+        # Recognized one of the conditions, use conditional opcode
+        cond = conditions[condition] << 3
+        index = 1
     else:
+        # Didn't recognize condition, use unconditional opcode
         cond = 0
         index = 0
 
@@ -809,12 +862,18 @@ def Returns():
     dec.Asm.Instructions[dec.Asm.Mnemonic][2][index]
     dec.Asm.Timing = dec.Asm.Instructions[dec.Asm.Mnemonic][2][index]
 
-    NoMore()
+    if index == 1:
+        # Only check end if an optional parameter was given
+        NoMore()
 
 
 # -----------------------------------------------------------------------------
 
 def Restart():
+
+    """
+    Handling RST instruction.
+    """
 
     global Asm
 
@@ -850,6 +909,10 @@ def Restart():
 # -----------------------------------------------------------------------------
 
 def Singles():
+
+    """
+    Handling single operand instructions.
+    """
 
     global Asm
 
@@ -891,6 +954,10 @@ def Singles():
 # -----------------------------------------------------------------------------
 
 def Bits():
+
+    """
+    Handling Bit operand instructions.
+    """
 
     global Asm
 
@@ -942,6 +1009,10 @@ def Bits():
 # -----------------------------------------------------------------------------
 
 def InOut():
+
+    """
+    Handling I/O instructions.
+    """
 
     global Asm
 
@@ -1014,6 +1085,10 @@ def InOut():
 
 def Exch():
 
+    """
+    Handling Exchange instruction.
+    """
+
     global Asm
 
     if MissingOperand():
@@ -1051,6 +1126,10 @@ def Exch():
 
 def IM():
 
+    """
+    Handling the IM instruction.
+    """
+
     global Asm
 
     if MissingOperand():
@@ -1075,7 +1154,12 @@ def IM():
 
 def Code(code):
 
+    """
+    Write 8-bit or 16-bit opcode to target propperly. (bit endian this time!)
+    """
+
     if code > 255:
+        # It's a word, write high byte first
         target.CodeByte(code >> 8)
     target.CodeByte(code)
 
