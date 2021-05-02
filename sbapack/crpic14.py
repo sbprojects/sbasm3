@@ -20,7 +20,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.01.01'
+crossversion = '3.01.02'
 minversion = '3.01.00'
 
 
@@ -264,6 +264,9 @@ def Immediate():
             else:
                 # Save opcode and upper byte
                 CodeWord(opcode + ((value[0] >> 24) & 0xFF))
+        else:
+            # An erro has occurred write a dummy opcode
+            CodeWord(opcode)
 
         if not assem.MoreParameters():
             # No more parameters
