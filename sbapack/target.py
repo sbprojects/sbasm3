@@ -421,9 +421,13 @@ def TformatMOS(buffer, memory, last=False):
 
     """
     Format a MOS technology target file.
+    Implement MOS format from here:
+    https://archive.org/details/KIM-1_Users_Manual/page/n98/mode/1up
+    https://srecord.sourceforge.net/man/man5/srec_mos_tech.5.html
     """
 
     if len(buffer) > 0:
+        dec.Asm.Code_TformatMOS_records += 1    # count record/line
         address = buffer[0]
         length = len(buffer) - 1
         checksum = length + ((address >> 8) & 0xFF) + (address & 0xFF)
@@ -444,7 +448,22 @@ def TformatMOS(buffer, memory, last=False):
         line = ''
 
     if last:
-        line = line + ';00' + dec.EOL
+        # Checked KIM-ROM how last line is processed
+        # after ';' it read the length and the address (as usual including calc the checksum)
+        # For lastline length=0 then only the checksum of address counts
+        # no more data read because of length=0
+        # next 2 byte are read and compared against the checksum (as usual nothing special except length=0 does not count)
+        # !!! for the first 255 lines address and checksum have the same value
+        # example: ";0000090009"  or ";000230023" but ";0001230024"
+        # checksum == bad  => print from offset 0x11 to TOP "\r ERR\r KIM\r\n" + 6 zero bytes
+        # checksum == good => print from offset 0x0c to TOP       "\r KIM\r\n" + 6 zero bytes
+        # It will not expect or read further data like XOFF or EOL
+        # after print it will directly "JMP START" for further processing
+        # The XOFF and EOL are added to not confuse editor
+        line = line + ';00'     # length = 0
+        address = dec.Asm.Code_TformatMOS_records
+        checksum = ((address >> 8) & 0xFF) + (address & 0xFF)   # length = 0
+        line = line + ToHex(address, 2) + ToHex(checksum, 2) + dec.XOFF + dec.EOL
 
     return line.upper()
 
