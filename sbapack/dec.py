@@ -20,7 +20,7 @@ import os
 # Default values
 # ------------------------------------------------------------------------------
 
-VERSION = "3.03.06"
+VERSION = "3.03.06mosfix1"
 DEF_ENV = "SBASM"
 ERRLVL_OK = 0       # No errors
 ERRLVL_PASS1 = 1    # Errors found during pass 1
@@ -37,6 +37,7 @@ ERRLVL_PYTHON = 5   # Fatal, wrong python version
 COMMENT1 = ";*#@"       # Legal comment delimiters on beginning of the line
 COMMENT2 = ";"          # Legal comment delimiters anywhere else on the line
 EOL = '\n'              # System dependant end of line character
+XOFF = '\x13'           # XOFF char 0x13 = dec(19) = ctrl+S
 MAX8 = (1 << 8)-1       # Max value for 8 bit numbers
 MAX16 = (1 << 16)-1     # Max value for 16 bit numbers
 MAX32 = (1 << 32)-1     # Max value for 32 bit numbers
@@ -96,6 +97,7 @@ Asm.List_Byte_Cnt = 0   # Byte count on each list line
 Asm.Code_Tfile = None     # File handle for code target file
 Asm.Code_Tbuffer = []     # Line buffer for code target file
 Asm.Code_Tformat = ''     # Code file's format
+Asm.Code_TformatMOS_records  = 0 # static record/line counter for TformatMOS()
 Asm.Code_Tfunc = None     # Indirect function handler
 Asm.Code_Tlength = 0      # Wanted target record length
 Asm.Code_Twrap = False    # Set if wrap warning already given
