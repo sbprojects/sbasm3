@@ -20,7 +20,7 @@ import os
 # Default values
 # ------------------------------------------------------------------------------
 
-VERSION = "3.03.06"
+VERSION = "3.03.07"
 DEF_ENV = "SBASM"
 ERRLVL_OK = 0       # No errors
 ERRLVL_PASS1 = 1    # Errors found during pass 1
@@ -102,6 +102,7 @@ Asm.Code_Twrap = False    # Set if wrap warning already given
 Asm.Code_Wrap = False     # Set if code memory full warning already given
 Asm.Code_Tmaxadd = 0      # Last allowed address in this file format
 Asm.Code_Tsegment = 0     # Segment number for intel hex files
+Asm.Code_MOScount = 0     # Record counter for Code based MOS Technologies
 Asm.Eeprom_Tfile = None   # File handle for EEPROM target file
 Asm.Eeprom_Tbuffer = []   # Line buffer for EEPROM target file
 Asm.Eeprom_Tformat = ''   # EEPROM file's format
@@ -110,6 +111,7 @@ Asm.Eeprom_Tlength = 0    # Wanted target record length
 Asm.Eeprom_Twrap = False  # Set if wrap warning already given
 Asm.Eeprom_Tmaxadd = 0    # Last allowed address in this file format
 Asm.Eeprom_Tsegment = 0   # Segment number for intel hex files
+Asm.Eeprom_MOScount = 0   # Record counter for Eeprom based MOS Technologies
 Asm.Timestamp = ""        # Will hold the time stamp at the start of assembly
 Asm.Run_Command = ""      # May hold the command to run after assembly
 

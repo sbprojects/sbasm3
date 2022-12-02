@@ -366,6 +366,35 @@ def TformatAP1(buffer, memory, last=False):
 
 # -----------------------------------------------------------------------------
 
+def TformatMIN(buffer, memory, last=False):
+
+    """
+    Format an Minimal CPU System target file.
+    (Same as Apple 1, except it generates lower case)
+    """
+
+    if len(buffer) > 0:
+        address = buffer[0]
+
+        line = ToHex(address, 2) + ':'
+        first = True
+
+        for i in buffer:
+            if first:
+                # Skip address of buffer
+                first = False
+            else:
+                # Write only the data bytes
+                line = line + ' ' + ToHex(i, 1)
+        line = line + dec.EOL
+    else:
+        line = ''
+
+    return line.lower()
+
+
+# -----------------------------------------------------------------------------
+
 def TformatBIN(buffer, file):
 
     """
@@ -424,6 +453,13 @@ def TformatMOS(buffer, memory, last=False):
     """
 
     if len(buffer) > 0:
+        if memory == 0:
+            # Increment code record counter
+            dec.Asm.Code_MOScount += 1
+        elif memory == 2:
+            # Increment eeprom record counter
+            dec.Asm.Eeprom_MOScount += 1
+
         address = buffer[0]
         length = len(buffer) - 1
         checksum = length + ((address >> 8) & 0xFF) + (address & 0xFF)
@@ -444,7 +480,15 @@ def TformatMOS(buffer, memory, last=False):
         line = ''
 
     if last:
-        line = line + ';00' + dec.EOL
+        if memory == 0:
+            # Get the code record counter
+            records = dec.Asm.Code_MOScount
+        elif memory == 2:
+            # Get the eeprom record counter
+            records = dec.Asm.Code_MOScount
+
+        checksum = ((records >> 8) & 0xFF) + (records & 0xFF)
+        line = ';00' + ToHex(records, 2) + ToHex(checksum, 2) + dec.EOL
 
     return line.upper()
 
