@@ -81,6 +81,12 @@ def RunSbassembler():
             # A run command is given, let's run it
 
             os.system(dec.Asm.Run_Command)
+    elif dec.Asm.Errors > 0:
+        if dec.Asm.Pass == 1:
+            sys.exit(dec.ERRLVL_PASS1)
+        else:
+            sys.exit(dec.ERRLVL_PASS2)
+
 
 
 # ------------------------------------------------------------------------------
