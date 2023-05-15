@@ -67,9 +67,15 @@ def RunSbassembler():
 
     dec.Asm.Pass = 1
     Assemble(sourcename)
+
     if dec.Asm.Errors == 0:
+        # No errors are found in pass 1
         dec.Asm.Pass = 2
         Assemble(sourcename)
+    else:
+        # We've just finished pass 1 with errors
+        errors.ShowErrors()
+        sys.exit(dec.ERRLVL_PASS1)
 
     errors.ShowErrors()
 
@@ -81,7 +87,9 @@ def RunSbassembler():
             # A run command is given, let's run it
 
             os.system(dec.Asm.Run_Command)
-
+    else:
+        # We've just finished pass 2 with errors
+        sys.exit(dec.ERRLVL_PASS2)
 
 # ------------------------------------------------------------------------------
 
