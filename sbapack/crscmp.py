@@ -9,6 +9,11 @@
 #   Date  : 2015-12-31
 #
 #   Cross Overlay for the SC/MP micro processor
+# 
+#   Thank you Graham (SiriusHardware) from UK Vintage Radio Repair and
+#   Restoration for fixing a bug in the displacement calculations,
+#   which I couldn't get right due to my limited experience with the
+#   SC/MP processor.
 #
 # ------------------------------------------------------------------------------
 
@@ -20,7 +25,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.02.00'
+crossversion = '3.03.00'
 minversion = '3.01.00'
 
 
@@ -429,7 +434,8 @@ def GetDisplacement(opcode, allowauto):
         errors.DoError("badoper", False)
 
     NoMore()
-    if dec.Asm.Pass == 2 and not forward:
+
+    if dec.Asm.Pass == 2:
         # Only test range in pass 2
         if offset < -128 or offset > 127:
             # The normal offset is out of range
@@ -438,7 +444,7 @@ def GetDisplacement(opcode, allowauto):
                 errors.DoError('range', False)
             else:
                 offset = offset2
-        if offset == -128 and absolute:
+        if offset == -128 and absolute and dec.Asm.Mnemonic[0].upper() != "J":
             # Offset calculated to -128, are you sure!
             errors.DoWarning(dec.Cross.Name + 'offset', True)
 

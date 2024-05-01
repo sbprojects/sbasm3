@@ -20,7 +20,7 @@ import os
 # Default values
 # ------------------------------------------------------------------------------
 
-VERSION = "3.03.07"
+VERSION = "3.03.10"
 DEF_ENV = "SBASM"
 ERRLVL_OK = 0       # No errors
 ERRLVL_PASS1 = 1    # Errors found during pass 1
@@ -39,6 +39,7 @@ COMMENT2 = ";"          # Legal comment delimiters anywhere else on the line
 EOL = '\n'              # System dependant end of line character
 MAX8 = (1 << 8)-1       # Max value for 8 bit numbers
 MAX16 = (1 << 16)-1     # Max value for 16 bit numbers
+MAX24 = (1 << 24)-1     # Max value for 16 bit numbers
 MAX32 = (1 << 32)-1     # Max value for 32 bit numbers
 MINUS_ONE = 0xFFFFFFFF  # 32 bit representation of -1
 

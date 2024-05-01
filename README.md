@@ -7,7 +7,8 @@ Installation of the software is not necessary. Unzip everything
 into a directory of your choice and make sure the program sbasm
 (for Linux and Mac) or sbasm.py (for Windows) is in your path.
 However you may want to move the opcode test files and header
-files somewhere else.
+files somewhere else. They are a reference only and are not needed
+for the assembler to run.
 The only thing that is important for the SB-Assembler is that the
 sbapack directory remains in the same directory as the sbasm and
 sbasm.py files.
