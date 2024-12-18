@@ -85,9 +85,11 @@
                 RLXA    1
                 RSXD    2
                 RNX     3
-                SCAL    4
+                SCAL    4,#$1234        #, /, \, = are optional
+                SCAL    4,$1234
                 SRET    5
-                DBNZ    6
+                DBNZ    6,#$1234        #, /, \, = are optional
+                DBNZ    6,$1234
 
 ;---------------------------------------------------------------------------
 ;   Immediate addressing

@@ -20,7 +20,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.01.01'
+crossversion = '3.01.02'
 minversion = '3.01.00'
 
 
@@ -85,7 +85,7 @@ def CrossInit():
         'LSNQ': (Implied, 0xC5, '3'),
         'LSIE': (Implied, 0xCC, '3'),
 
-        # Unique instructions to the 1804
+        # Unique instructions to the 1804 and 1805
         'ETQ' : (Implied, 0x6809, '3'),
         'LDC' : (Implied, 0x6806, '3'),
         'GEC' : (Implied, 0x6808, '3'),
@@ -123,14 +123,16 @@ def CrossInit():
         'OUT' : (RegArg, 0x60, '2'),        # Second nibble is a dummy
         'INP' : (RegArg, 0x68, '2'),        # Second nibble is a dummy
 
-        # Unique instructions to the 1804
+        # Unique instructions to the 1804 and 1805
         'RLXA': (RegArg, 0x6860, '5'),
         'RSXD': (RegArg, 0x68A0, '5'),
         'RNX' : (RegArg, 0x68B0, '4'),
-        'SCAL': (RegArg, 0x6880, '10'),
         'SRET': (RegArg, 0x6890, '8'),
+
+        # Unique instructions to the 1804 and 1805
+        'SCAL': (Immediate2, 0x6880, '10'),
         # Unique instructions to the 1805
-        'DBNZ': (RegArg, 0x6820, '5'),
+        'DBNZ': (Immediate2, 0x6820, '5'),
 
         # Immediate addressing
         'LDI' : (Immediate, 0xF8, '2'),
@@ -144,7 +146,7 @@ def CrossInit():
         'SMI' : (Immediate, 0xFF, '2'),
         'SMBI': (Immediate, 0x7F, '2'),
 
-        # Unique instructions to the 1804
+        # Unique instructions to the 1804 and 1805
         'RLDI': (Immediate2, 0x68C0, '5'),
 
         # Unique instructions to the 1805
@@ -175,7 +177,7 @@ def CrossInit():
         'B4'  : (Branch, 0x37, '2'),
         'BN4' : (Branch, 0x3F, '2'),
 
-        # Unique instructions to the 1804
+        # Unique instructions to the 1804 and 1805
         'BCI' : (Branch, 0x683E, '3'),
         'BXI' : (Branch, 0x683F, '3'),
 

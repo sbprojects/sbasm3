@@ -20,7 +20,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.01.01'
+crossversion = '3.01.02'
 minversion = '3.01.00'
 
 
@@ -120,8 +120,8 @@ def CrossInit():
         'RLXA': (RegArg, 0x6860, '5'),
         'RSXD': (RegArg, 0x68A0, '5'),
         'RNX' : (RegArg, 0x68B0, '4'),
-        'SCAL': (RegArg, 0x6880, '10'),
         'SRET': (RegArg, 0x6890, '8'),
+        'SCAL': (Immediate2, 0x6880, '10'),
 
         # Immediate addressing
         'LDI' : (Immediate, 0xF8, '2'),
