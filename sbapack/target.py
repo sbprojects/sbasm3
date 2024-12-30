@@ -344,6 +344,8 @@ def TformatAP1(buffer, memory, last=False):
     Format an Apple 1 target file.
     """
 
+    AP1_EOL = '\r'
+
     if len(buffer) > 0:
         address = buffer[0]
 
@@ -357,7 +359,7 @@ def TformatAP1(buffer, memory, last=False):
             else:
                 # Write only the data bytes
                 line = line + ' ' + ToHex(i, 1)
-        line = line + dec.EOL
+        line = line + AP1_EOL
     else:
         line = ''
 
