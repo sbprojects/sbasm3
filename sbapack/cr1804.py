@@ -20,7 +20,7 @@ import dec
 import errors
 import target
 
-crossversion = '3.01.02'
+crossversion = '3.01.03'
 minversion = '3.01.00'
 
 
@@ -374,6 +374,7 @@ def RegArg():
         return
 
     opcode = dec.Asm.Instructions[dec.Asm.Mnemonic][1]
+    full_opcode = opcode
     if opcode > 0xFF:
         # It's a two byte opcode
         target.CodeByte(opcode >> 8)
@@ -390,7 +391,7 @@ def RegArg():
             # LDN 0 is not allowed
             errors.DoError('range', False)
 
-        if opcode == 0x60 or opcode == 0x68:
+        if full_opcode == 0x60 or full_opcode == 0x68:
             # OUT and INP instruction have a restricted range
             if value < 1 or value > 7:
                 value = 0
